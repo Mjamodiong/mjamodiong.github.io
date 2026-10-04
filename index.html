@@ -232,6 +232,98 @@
             --skill-color: #b45309;
         }
 
+        /* ===== DARK MODE ===== */
+        [data-mode="dark"] {
+            --dark: #e2e8f0;
+            --dark-light: #cbd5e1;
+            --gray: #94a3b8;
+            --gray-light: #64748b;
+            --light: #0f172a;
+            --white: #1e293b;
+            --border: #334155;
+            --hero-from: #0f172a;
+            --hero-to: #1e293b;
+            --skill-bg: rgba(148, 163, 184, 0.12);
+            --skill-color: #cbd5e1;
+            background: #0f172a;
+        }
+
+        [data-mode="dark"] body {
+            background: #0f172a;
+            color: #e2e8f0;
+        }
+
+        /* Nav */
+        [data-mode="dark"] nav {
+            background: rgba(15, 23, 42, 0.85);
+            border-bottom-color: #334155;
+        }
+        [data-mode="dark"] .logo { color: #e2e8f0; }
+        [data-mode="dark"] .nav-links a { color: #94a3b8; }
+        [data-mode="dark"] .nav-links a:hover { color: var(--primary); }
+
+        /* Cards that use --white as background */
+        [data-mode="dark"] .profile-card,
+        [data-mode="dark"] .education-card,
+        [data-mode="dark"] .service-card,
+        [data-mode="dark"] .skill-category,
+        [data-mode="dark"] .exp-card,
+        [data-mode="dark"] .project-card,
+        [data-mode="dark"] .cert-card,
+        [data-mode="dark"] .highlight-item {
+            background: #1e293b;
+            border-color: #334155;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Profile avatar ring */
+        [data-mode="dark"] .profile-avatar { border-color: #1e293b; }
+
+        /* Project image block */
+        [data-mode="dark"] .project-image {
+            background: linear-gradient(135deg, #0b1220 0%, #1e293b 100%);
+        }
+        [data-mode="dark"] .project-badge {
+            background: rgba(30, 41, 59, 0.95);
+            color: var(--primary);
+        }
+
+        /* Theme panel */
+        [data-mode="dark"] .theme-panel {
+            background: #1e293b;
+            border-color: #334155;
+        }
+        [data-mode="dark"] .theme-swatch {
+            background: #0f172a;
+        }
+        [data-mode="dark"] .theme-swatch:hover,
+        [data-mode="dark"] .theme-swatch.active {
+            background: #334155;
+        }
+        [data-mode="dark"] .theme-swatch-name { color: #e2e8f0; }
+
+        /* Contact form (already translucent over gradient — keep as-is) */
+        [data-mode="dark"] .contact-form {
+            background: rgba(15, 23, 42, 0.35);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Footer */
+        [data-mode="dark"] footer {
+            background: #0b1220;
+            color: #94a3b8;
+        }
+
+        /* Outline button (was dark text on light) */
+        [data-mode="dark"] .btn-outline {
+            color: #e2e8f0;
+            border-color: #334155;
+        }
+        [data-mode="dark"] .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
@@ -926,6 +1018,27 @@
             line-height: 1.2;
         }
 
+        .mode-toggle {
+            position: fixed; bottom: 2rem; right: 6.5rem;   /* sits left of the theme button */
+            width: 56px; height: 56px; border-radius: 50%;
+            background: var(--white); color: var(--dark);
+            border: 1px solid var(--border); cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            z-index: 1100;
+            transition: all 0.3s ease;
+        }
+        .mode-toggle:hover {
+            transform: scale(1.08);
+            border-color: var(--primary);
+        }
+        [data-mode="dark"] .mode-toggle {
+            background: #1e293b;
+            border-color: #334155;
+            color: #e2e8f0;
+        }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 968px) {
             .hero-container { grid-template-columns: 1fr; gap: 3rem; }
@@ -950,7 +1063,14 @@
                 width: auto;
             }
             .theme-list { grid-template-columns: repeat(2, 1fr); }
+
+            /* dark mode toggle */
+            .mode-toggle {
+                bottom: 5rem; right: 1.5rem;
+                width: 50px; height: 50px;
+            }
         }
+
     </style>
 </head>
 <body>
@@ -1041,7 +1161,7 @@
     <section id="about" class="about-section">
         <div class="section-container">
             <div class="section-header">
-                <span class="section-label">// About Me</span>
+                <span class="section-label">About Me</span>
                 <h2>Reliable Support, Real Experience</h2>
                 <p>I bring two years of combined administrative and technical experience and a genuine drive to keep learning.</p>
             </div>
@@ -1109,7 +1229,7 @@
     <section id="services">
         <div class="section-container">
             <div class="section-header">
-                <span class="section-label">// What I Offer</span>
+                <span class="section-label">What I Offer</span>
                 <h2>Services</h2>
                 <p>Support tailored to your business needs from admin to technical.</p>
             </div>
@@ -1142,7 +1262,7 @@
     <section id="skills" class="about-section">
         <div class="section-container">
             <div class="section-header">
-                <span class="section-label">// My Toolkit</span>
+                <span class="section-label">My Toolkit</span>
                 <h2>Skills &amp; Tools</h2>
                 <p>What I use every day to support teams, clients, and operations.</p>
             </div>
@@ -1221,7 +1341,7 @@
     <section id="experience" class="experience-section">
         <div class="section-container">
             <div class="section-header">
-                <span class="section-label">// Where I've Worked</span>
+                <span class="section-label">Where I've Worked</span>
                 <h2>Experience</h2>
                 <p>Two years of hands-on work across admin, technical, and client-facing roles.</p>
             </div>
@@ -1302,7 +1422,7 @@
     <section id="projects">
         <div class="section-container">
             <div class="section-header">
-                <span class="section-label">// My Work</span>
+                <span class="section-label">My Work</span>
                 <h2>Projects &amp; Samples</h2>
                 <p>Published research and sample work that show how I approach tasks.</p>
             </div>
@@ -1314,7 +1434,7 @@
                         <span class="project-badge">Published</span>
                         <div class="project-image-code">
                             <span style="color:#cba6f7">research</span>.<span style="color:#a6e3a1">publish</span>(<span style="color:#a6e3a1">"IEEE Xplore"</span>);<br>
-                            <span style="color:#6c7086">// Capstone research, 2025</span>
+                            <span style="color:#6c7086">Capstone research, 2025</span>
                         </div>
                     </div>
                     <div class="project-body">
@@ -1337,7 +1457,7 @@
                         <span class="project-badge">Sample Project</span>
                         <div class="project-image-code">
                             <span style="color:#cba6f7">inbox</span>.<span style="color:#89b4fa">organize</span>()<br>
-                            <span style="color:#6c7086">// labels, filters, templates</span>
+                            <span style="color:#6c7086">labels, filters, templates</span>
                         </div>
                     </div>
                     <div class="project-body">
@@ -1361,7 +1481,7 @@
                         <div class="project-image-code">
                             <span style="color:#89b4fa">TRACK</span> records, deadlines,<br>
                             <span style="color:#89b4fa">SEND</span> reminders<br>
-                            <span style="color:#6c7086">// spreadsheet system</span>
+                            <span style="color:#6c7086">spreadsheet system</span>
                         </div>
                     </div>
                     <div class="project-body">
@@ -1385,7 +1505,7 @@
     <section id="certifications" class="about-section">
         <div class="section-container">
             <div class="section-header">
-                <span class="section-label">// Credentials</span>
+                <span class="section-label">Credentials</span>
                 <h2>Certifications &amp; Training</h2>
                 <p>Continuous learning in AI tools and networking.</p>
             </div>
@@ -1462,6 +1582,9 @@
             <p>© 2026 Marjore Jamodiong. Built with HTML, CSS &amp; JavaScript.</p>
         </div>
     </footer>
+
+    <!-- DARK MODE TOGGLE -->
+    <button class="mode-toggle" id="modeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
 
     <!-- THEME SWITCHER -->
     <button class="theme-toggle" id="themeToggle" aria-label="Change theme color" title="Change theme color">🎨</button>
@@ -1650,5 +1773,55 @@
         });
     </script>
 
+    <script>
+        // ===== DARK MODE =====
+        const MODE_KEY = 'mj-portfolio-mode';
+        const DEFAULT_MODE = 'light';
+
+        const modeToggle = document.getElementById('modeToggle');
+
+        function applyMode(mode) {
+            document.documentElement.setAttribute('data-mode', mode);
+            modeToggle.textContent = mode === 'dark' ? '☀️' : '🌙';
+            modeToggle.setAttribute('aria-label',
+                mode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+            modeToggle.setAttribute('title',
+                mode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+        }
+
+        function saveMode(mode) {
+            try { localStorage.setItem(MODE_KEY, mode); } catch (e) {}
+        }
+
+        function loadMode() {
+            let saved = null;
+            try { saved = localStorage.getItem(MODE_KEY); } catch (e) {}
+            // Fall back to system preference if user hasn't chosen
+            const prefersDark = window.matchMedia &&
+                window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const mode = saved || (prefersDark ? 'dark' : DEFAULT_MODE);
+            applyMode(mode);
+        }
+
+        modeToggle.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-mode') || 'light';
+            const next = current === 'dark' ? 'light' : 'dark';
+            applyMode(next);
+            saveMode(next);
+        });
+
+        loadMode();
+
+        // Prevent flash of light mode
+        (function () {
+            try {
+                var saved = localStorage.getItem('mj-portfolio-mode');
+                var prefersDark = window.matchMedia &&
+                    window.matchMedia('(prefers-color-scheme: dark)').matches;
+                var mode = saved || (prefersDark ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-mode', mode);
+            } catch (e) {}
+        })();
+    </script>
 </body>
 </html>
