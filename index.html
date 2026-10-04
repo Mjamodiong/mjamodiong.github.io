@@ -232,28 +232,6 @@
             --skill-color: #b45309;
         }
 
-        [data-theme="maroon"] {
-            --primary: #800000;
-            --primary-dark: #5c0000;
-            --accent: #a52a2a;
-            --dark: #1a0505;
-            --dark-light: #2b0a0a;
-            --gray: #64748b;
-            --gray-light: #a8a29e;
-            --light: #fdf5f5;
-            --white: #ffffff;
-            --success: #10b981;
-            --border: #f0d5d5;
-            --hero-from: #fdf5f5;
-            --hero-to: #f9e8e8;
-            --glow-1: rgba(128,0,0,0.08);
-            --glow-2: rgba(165,42,42,0.08);
-            --btn-shadow: rgba(128,0,0,0.4);
-            --btn-shadow-hover: rgba(128,0,0,0.5);
-            --skill-bg: rgba(128,0,0,0.08);
-            --skill-color: #5c0000;
-        }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
@@ -395,11 +373,16 @@
         }
         .profile-avatar {
             width: 130px; height: 130px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            display: flex; align-items: center; justify-content: center;
-            font-size: 3rem; color: white; font-weight: 700;
-            margin: 0 auto 1.5rem; border: 5px solid white;
+            margin: 0 auto 1.5rem;
+            border: 5px solid white;
             box-shadow: 0 10px 30px var(--btn-shadow);
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+        }
+        .profile-avatar img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            display: block;
         }
         .profile-card h3 {
             font-size: 1.3rem; font-weight: 700; margin-bottom: 0.3rem;
@@ -1005,7 +988,9 @@
                 </div>
             </div>
             <div class="profile-card">
-                <div class="profile-avatar">MJ</div>
+                <div class="profile-avatar">
+                    <img src="public/profile.png" alt="Portrait of Marjore I. Jamodiong" loading="lazy">
+                </div>
                 <h3>Marjore I. Jamodiong</h3>
                 <p class="role">IT Technical Specialist • Admin Assistant • Virtual Assistant</p>
                 <div class="profile-info">
@@ -1526,10 +1511,6 @@
             <button class="theme-swatch" data-theme="amber">
                 <span class="theme-swatch-color" style="background: linear-gradient(135deg, #d97706, #fbbf24)"></span>
                 <span class="theme-swatch-name">Amber Gold</span>
-            </button>
-            <button class="theme-swatch" data-theme="maroon">
-                <span class="theme-swatch-color" style="background: linear-gradient(135deg, #800000, #a52a2a)"></span>
-                <span class="theme-swatch-name">Maroon</span>
             </button>
         </div>
     </div>
